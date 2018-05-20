@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<team22project.Models.Showing>
+@using team22project.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Longhorn Cinema</h2>
+<h3>Today's Showtimes</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowingDate)
+            </td>
+        </tr>
+    }

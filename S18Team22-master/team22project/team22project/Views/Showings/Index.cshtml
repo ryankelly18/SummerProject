@@ -1,0 +1,66 @@
+﻿@model IEnumerable<team22project.Models.Showing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Theatre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tickets)
+        </th>
+        <th></th>
+    </tr>
+       
+            @foreach (var item in Model) { 
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Display)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theatre)
+        </td>
+        @if (item.SpecialEvent == true)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialEvent)
+        </td>
+}
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Tickets)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ShowingID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ShowingID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ShowingID })
+        </td>
+    </tr>
+            }
+
+
+
+  </table>

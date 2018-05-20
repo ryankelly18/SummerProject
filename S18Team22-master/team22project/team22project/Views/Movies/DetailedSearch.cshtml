@@ -1,0 +1,59 @@
+﻿@using team22project.Controllers
+@using team22project.Models
+@{
+    /**/
+
+    ViewBag.Title = "DetailedSearch";
+}
+
+<h2>Detailed Search</h2>
+
+@using (Html.BeginForm("DisplaySearchResults", "Movies", FormMethod.Get))
+{
+<p class="form-group">
+    <label class="radio">@Html.RadioButton("ShowingOnly", true, true) Currently Showing Movies</label>
+    </p>
+    <p>
+    <label class="radio">@Html.RadioButton("ShowingOnly", false) All Movies</label>
+</p>
+    <p class="form-group">
+        Search Movie Title: @Html.TextBox("strTitle", null, new { @class = "form-control" })
+        <br />
+    </p>
+    <p class="form-group">
+        Search Tagline: @Html.TextBox("strTagline", null, new { @class = "form-control" })
+        <br />
+    </p>
+    <p class="form-group">
+        Select Release Year: @Html.TextBox("intSelectedYear", null, new { @class = "form-control" })
+        <br />
+    </p>
+    <p class="form-group">
+        MPAA Rating:
+    </p>
+    <p>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.Any, true) Any</label>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.G) G</label>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.PG) PG</label>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.PG13) PG13</label>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.R) R</label>
+        <label class="radio">@Html.RadioButton("MPAARating", MPAARating.Unrated) Unrated</label>
+        <br />
+    </p>
+    <p class="form-group">
+        Search Actors: @Html.TextBox("strActors", null, new { @class = "form-control" })
+        <br />
+    </p>
+    <p class="form-group">
+        Search Genres: @Html.ListBox("SelectedGenre", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" })
+        <br />
+    </p>
+    <p>
+        Showing Day:<input type="date" name="datSchedule" class="form-control" />
+    </p>
+
+
+    <p class="form-group">
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+}

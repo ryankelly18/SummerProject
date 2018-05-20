@@ -1,0 +1,72 @@
+﻿@model team22project.Models.Showing
+@using team22project.Models
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+
+ViewBag.Available
+
+<h2>Details</h2>
+
+<div>
+    <h4>Showing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.Movie.Tagline)
+        </dd>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie.MPAARating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Display)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Theatre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theatre)
+        </dd>
+
+       <dd>
+            @Html.ListBox("AvailableSeats", (MultiSelectList)ViewBag.GetAllSeats, new {  @class = "form-control"})
+        </dd>
+
+        @if (Model.SpecialEvent == true)
+    {
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialEvent)
+        </dt>
+        @*@foreach (var item in Model.Tickets)
+    {
+        <dd>
+            @Html.DisplayFor(model => model.Tickets.Seat)
+        </dd>
+}*@
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialEvent)
+        </dd>
+}
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShowingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

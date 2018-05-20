@@ -1,0 +1,85 @@
+﻿@model team22project.Models.Movie
+@using team22project.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+
+<div>
+    @*<h4> Details</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tagline)
+        </dd>
+
+        <dt>
+            <span>CAST</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actors)
+        </dd>
+
+        <dt>
+            <span>GENRES</span>
+        </dt>
+
+        <dd>
+            @foreach (Genre genre in Model.Genres)
+
+        {
+            @Html.DisplayFor(modelItem => genre.GenreName)<span> | </span>
+    }
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.MPAARating)
+        </dt>
+
+        <dd>
+            <span>OVERVIEW - </span>@Html.DisplayFor(model => model.Overview)
+        </dd>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.ReleaseDate)<span> - </span>@Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Revenue)<span> - </span>@Html.DisplayFor(model => model.Revenue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RunTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RunTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Showings)
+        </dt>
+        @foreach (Showing showing in Model.Showings)
+    {
+        <dd>
+            @Html.DisplayFor(modelItem => showing.Display)<span> - @Html.ActionLink("Find Tickets", "Create", "Transactions", new { id = showing.ShowingID }, null)</span>
+        </dd>
+}
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieID }) |
+    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("User List", "Details", "Showings", new { querystringparameter = Model.MovieID }, null)*@
+</p>
+
+

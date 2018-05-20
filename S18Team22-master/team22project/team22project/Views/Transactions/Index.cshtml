@@ -1,0 +1,51 @@
+﻿@model IEnumerable<team22project.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransactionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TransactionID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TransactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TransactionID })
+        </td>
+    </tr>
+}
+
+</table>
